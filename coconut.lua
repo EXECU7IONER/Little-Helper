@@ -1,5 +1,6 @@
---Rebirth Champions X - Coconut Farm GUI
--- 
+-- Rebirth Champions X
+-- Little Helper: Coconut Farm GUI
+
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
