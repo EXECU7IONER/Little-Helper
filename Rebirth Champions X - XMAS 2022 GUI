@@ -1,5 +1,6 @@
 -- Rebirth Champions X - XMAS 2022 GUI
---
+-- Done by EXECU7IONER
+
 local ScreenGuiMini = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
@@ -10,7 +11,7 @@ local Exit = Instance.new("TextButton")
 local CoolDown = Instance.new("TextLabel")
 local TITELTEXT ="Rebirth Champions X"
 local OPTIONTEXT ="Auto Present Collect"
-local CoolDownTimer = 11 -- seconds
+local CoolDownTimer = 120 -- seconds
 
 ScreenGuiMini.Name = "ScreenGuiMini"
 ScreenGuiMini.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
