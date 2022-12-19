@@ -11,7 +11,7 @@ local Exit = Instance.new("TextButton")
 local CoolDown = Instance.new("TextLabel")
 local TITELTEXT ="Rebirth Champions X"
 local OPTIONTEXT ="Auto Present Collect"
-local CoolDownTimer = 120 -- seconds
+local CoolDownTimer = 120 -- seconds waiting
 
 ScreenGuiMini.Name = "ScreenGuiMini"
 ScreenGuiMini.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
