@@ -8,8 +8,6 @@ local Option1 = Instance.new("TextLabel")
 local Option = Instance.new("TextLabel")
 local Button = Instance.new("TextButton")
 local Exit = Instance.new("TextButton")
-local TITLETEXT = "Rebirth Champions X - XMAS 2022"
-local OPTIONTEXT = "Auto Collect"
 
 ScreenGuiMini.Name = "ScreenGuiMini"
 ScreenGuiMini.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -58,12 +56,12 @@ Option.TextXAlignment = Enum.TextXAlignment.Left
 
 Button.Name = "Button"
 Button.Parent = Option1
+Button.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 Button.BorderSizePixel = 0
 Button.Position = UDim2.new(0.819999874, 0, 0.159999996, 0)
 Button.Size = UDim2.new(0.151999995, 0, 0.680000007, 0)
 Button.Font = Enum.Font.SourceSansBold
-Button.BackgroundColor3 = Color3.new(0, 0.666667, 0)
-Button.Text = "START"
+Button.Text = "OFF"
 Button.TextColor3 = Color3.fromRGB(238, 238, 238)
 Button.TextSize = 14.000
 
@@ -78,35 +76,48 @@ Exit.Text = "X"
 Exit.TextColor3 = Color3.fromRGB(238, 238, 238)
 Exit.TextSize = 14.000
 
-local function OOLKQV_fake_script() -- Button.LocalScript 
+local function LSMELA_fake_script() -- Button.LocalScript 
 	local script = Instance.new('LocalScript', Button)
 
 	local button = script.Parent.Parent.Button
 	local option = script.Parent.Parent.Option
 	local Toggled = false
 	local title = script.Parent.Parent.Parent.Title
-	title.Text = TITLETEXT
-	option.Text = OPTIONTEXT
+	local waitingTime = 120 -- seconds
+	title.Text = "Rebirth Champions X"
+	option.Text = "Auto Present Collect"
 	
 	local function MyBunny()
         for _,v in pairs (game:GetService('Workspace').Scripts.PresentsCollect.Storage:GetChildren()) do
-                if v:IsA('Model') then
-                    v.primary.CFrame = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame
-                end
+            if v:IsA('Model') then
+                v.primary.CFrame = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame
+            end
         end
         task.wait(0.1)
 	end
 	
 	local function leftClick()
-		MyBunny()
+		if Toggled == false then
+			Toggled = true
+			button.BackgroundColor3 = Color3.new(0, 0.666667, 0)
+			button.Text = "ON"
+			while Toggled == true do
+				MyBunny()
+				wait(waitingTime)
+			end
+		elseif Toggled == true then
+			Toggled = false
+			button.BackgroundColor3 = Color3.new(0.666667, 0, 0)
+			button.Text = "OFF"
+		end
 	end
 	button.MouseButton1Click:Connect(leftClick)
 	
 	
 	
 end
-coroutine.wrap(OOLKQV_fake_script)()
-local function EMCVD_fake_script() -- Exit.ExitScript 
+coroutine.wrap(LSMELA_fake_script)()
+local function VZKHIC_fake_script() -- Exit.ExitScript 
 	local script = Instance.new('LocalScript', Exit)
 
 	local gui = script.Parent.Parent.Parent.Parent.ScreenGuiMini
@@ -118,8 +129,8 @@ local function EMCVD_fake_script() -- Exit.ExitScript
 	
 	exit.MouseButton1Click:Connect(leftClick)
 end
-coroutine.wrap(EMCVD_fake_script)()
-local function VJEDLUK_fake_script() -- Main.LocalScript 
+coroutine.wrap(VZKHIC_fake_script)()
+local function WRUIOUM_fake_script() -- Main.LocalScript 
 	local script = Instance.new('LocalScript', Main)
 
 	frame = script.Parent.Parent.Main
@@ -127,4 +138,4 @@ local function VJEDLUK_fake_script() -- Main.LocalScript
 	frame.Active = true
 	frame.Selectable = true
 end
-coroutine.wrap(VJEDLUK_fake_script)()
+coroutine.wrap(WRUIOUM_fake_script)()
