@@ -1,0 +1,167 @@
+-- Rebirth Champions X - XMAS 2022 GUI
+-- Done by EXECU7IONER
+
+local ScreenGuiMini = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Option1 = Instance.new("TextLabel")
+local Option = Instance.new("TextLabel")
+local Button = Instance.new("TextButton")
+local Exit = Instance.new("TextButton")
+local CoolDown = Instance.new("TextLabel")
+local TITELTEXT ="Rebirth Champions X"
+local OPTIONTEXT ="Auto Present Collect"
+local CoolDownTimer = 120 -- seconds waiting
+
+ScreenGuiMini.Name = "ScreenGuiMini"
+ScreenGuiMini.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGuiMini.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Main.Name = "Main"
+Main.Parent = ScreenGuiMini
+Main.BackgroundColor3 = Color3.fromRGB(68, 68, 68)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.0167683046, 0, 0.543633759, 0)
+Main.Size = UDim2.new(0, 250, 0, 100)
+
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
+Title.BorderSizePixel = 0
+Title.Size = UDim2.new(1, 0, 0.200000003, 0)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "MINI GUI"
+Title.TextColor3 = Color3.fromRGB(238, 238, 238)
+Title.TextSize = 14.000
+
+Option1.Name = "Option1"
+Option1.Parent = Main
+Option1.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
+Option1.BorderSizePixel = 0
+Option1.Position = UDim2.new(0, 0, 0.289999992, 0)
+Option1.Size = UDim2.new(1, 0, 0.25, 0)
+Option1.Font = Enum.Font.SourceSans
+Option1.Text = ""
+Option1.TextColor3 = Color3.fromRGB(0, 0, 0)
+Option1.TextSize = 14.000
+
+Option.Name = "Option"
+Option.Parent = Option1
+Option.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Option.BackgroundTransparency = 1.000
+Option.BorderSizePixel = 0
+Option.Position = UDim2.new(0.0280000009, 0, 0, 0)
+Option.Size = UDim2.new(0.748000026, 0, 1, 0)
+Option.Font = Enum.Font.SourceSans
+Option.Text = "Option"
+Option.TextColor3 = Color3.fromRGB(238, 238, 238)
+Option.TextSize = 14.000
+Option.TextXAlignment = Enum.TextXAlignment.Left
+
+Button.Name = "Button"
+Button.Parent = Option1
+Button.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+Button.BorderSizePixel = 0
+Button.Position = UDim2.new(0.819999874, 0, 0.159999996, 0)
+Button.Size = UDim2.new(0.151999995, 0, 0.680000007, 0)
+Button.Font = Enum.Font.SourceSansBold
+Button.Text = "ON"
+Button.TextColor3 = Color3.fromRGB(238, 238, 238)
+Button.TextSize = 14.000
+
+Exit.Name = "Exit"
+Exit.Parent = Main
+Exit.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+Exit.BorderSizePixel = 0
+Exit.Position = UDim2.new(0.915999889, 0, 0, 0)
+Exit.Size = UDim2.new(0.0799999982, 0, 0.200000003, 0)
+Exit.Font = Enum.Font.SourceSansBold
+Exit.Text = "X"
+Exit.TextColor3 = Color3.fromRGB(238, 238, 238)
+Exit.TextSize = 14.000
+
+CoolDown.Name = "CoolDown"
+CoolDown.Parent = Main
+CoolDown.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
+CoolDown.BorderSizePixel = 0
+CoolDown.Position = UDim2.new(0.0280000009, 0, 0.730000615, 0)
+CoolDown.Size = UDim2.new(0.943999887, 0, 0.200000301, 0)
+CoolDown.Font = Enum.Font.SourceSans
+CoolDown.Text = " Cooldown:"
+CoolDown.TextColor3 = Color3.fromRGB(238, 238, 238)
+CoolDown.TextSize = 14.000
+CoolDown.TextXAlignment = Enum.TextXAlignment.Left
+
+local function HMXYFJ_fake_script() -- Button.LocalScript 
+	local script = Instance.new('LocalScript', Button)
+	local button = script.Parent.Parent.Button
+	local option = script.Parent.Parent.Option
+	local Toggled = false
+	local title = script.Parent.Parent.Parent.Title
+	title.Text = TITELTEXT
+	option.Text = OPTIONTEXT
+	local CoolDown = script.Parent.Parent.Parent.CoolDown
+	local waitingTime = CoolDownTimer
+	local function MyBunny()
+		for _,v in pairs (game:GetService('Workspace').Scripts.PresentsCollect.Storage:GetChildren()) do
+			if v:IsA('Model') then
+				v.primary.CFrame = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame
+			end
+		end
+		task.wait(0.1)
+	end
+	
+	local function coolDown()
+		local timer = waitingTime
+		for count = timer, 0, -1 do
+			CoolDown.Text = " Cooldown: "..count
+			wait(1)
+		end
+	end
+	
+	local function leftClick()
+		if Toggled == false then
+			Toggled = true
+			button.BackgroundColor3 = Color3.new(0.666667, 0, 0)
+			button.Text = "OFF"
+			while Toggled == true do
+				MyBunny()
+				coolDown()
+				CoolDown.Text = "Collecting..."
+				wait(0.5)
+				CoolDown.Text = "Cooldown: "
+			end
+		elseif Toggled == true then
+			Toggled = false
+			button.BackgroundColor3 = Color3.new(0, 0.666667, 0)
+			button.Text = "ON"
+		end
+	end
+	button.MouseButton1Click:Connect(leftClick)
+	
+	
+	
+end
+coroutine.wrap(HMXYFJ_fake_script)()
+local function GLTF_fake_script() -- Exit.ExitScript 
+	local script = Instance.new('LocalScript', Exit)
+
+	local gui = script.Parent.Parent.Parent.Parent.ScreenGuiMini
+	local exit = script.Parent.Parent.Exit
+	
+	local function leftClick()
+		gui:Destroy()
+	end
+	
+	exit.MouseButton1Click:Connect(leftClick)
+end
+coroutine.wrap(GLTF_fake_script)()
+local function PNGHUCJ_fake_script() -- Main.LocalScript 
+	local script = Instance.new('LocalScript', Main)
+
+	frame = script.Parent.Parent.Main
+	frame.Draggable = true
+	frame.Active = true
+	frame.Selectable = true
+end
+coroutine.wrap(PNGHUCJ_fake_script)()
